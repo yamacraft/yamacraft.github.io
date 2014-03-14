@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+  <meta charset="utf-8">
+  <title>ATND beta検索</title>
+
+ 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+  <script type="text/javascript" src="js/atndbeta_search.js"></script>
+
+  <link rel="stylesheet" href="css/kube.min.css" />
+    
+  </head>
+	<body ng-controller="AtndbetaSearchCtrl">
+    <form class="navbar-search pull-left" ng-submit="doSearch()">
+	   	<input type="text" class="search-query" placeholder="search" ng-model="query"/>
+      <select ng-model="size" ng-options="s.name for s in sizes">
+        <option value="">-- chose size --</option>
+      </select>
+      <select ng-model="page" ng-options="p.name for p in pages">
+        <option value="">-- chose page --</option>
+      </select>
+
+      <input class="btn-primary" type="submit" value="検索">
+    </form>
+		<hr>
+    <p ng-if="!!loading">検索中..</p>
+
+    <table border="1">
+      <tr>
+        <th>タイトル</th>
+        <th>開催日</th>
+        <th>開催場所</th>
+        <th>詳細</th>
+        <th>定員／現在（補欠）</th>
+        <th>オーナー</th>
+        <th>URL</th>
+      </tr>
+
+      <tr ng-repeat="result in results">
+        <td>{{result.title}}<br>{{result.catch}}</td>
+        <td>{{result.started_at | date:'yy年M月d日 HH:mm' }}</td>
+        <td><span ng-if="!!result.place">{{result.place}}<span ng-if="!!result.address">({{result.address}})</span></span></td>
+        <td><a href="{{result.event_url}}" target="_blank"><img src="img/external-link-32.png"></a></td>
+        <td>
+          <span ng-if="!!result.limit">{{result.limit}}／{{result.accepted}}（+{{result.waiting}}）</span>
+          <span ng-if="!result.limit">-</span>
+        </td>
+        <td>
+          <a href="http://atnd.org/users/{{result.owner_id}}" target="_blank">{{result.owner_nickname}}</a><br>
+          <a href="https://twitter.com/{{result.owner_twitter_id}}" target="_blank" ng-if="!!result.owner_twitter_id"><img src="{{result.owner_twitter_img}}" width="32"><br>@{{result.owner_twitter_id}}</a>
+        </td>
+        <td><a href="{{result.url}}" target="_blank" ng-if="!!result.url"><img src="img/link-32.png"></a></td>
+      </tr>
+    </table>
+
+	</body>
+</html>
