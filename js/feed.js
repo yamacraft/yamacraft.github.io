@@ -2,6 +2,7 @@
  * http://www.jdev.it/a-very-simple-rss-reader-with-angularjs-and-google-feed-api/
  */
 var feeds = [];
+var feeds2= [];
 angular.module('feedModule', ['ngResource'])
     .factory('FeedLoader', function ($resource) {
         return $resource('http://ajax.googleapis.com/ajax/services/feed/load', {}, {
@@ -15,8 +16,10 @@ angular.module('feedModule', ['ngResource'])
                 {title: 'exblog', url: 'http://yamacraft2.exblog.jp/index.xml'},
                 ];
             if (feeds.length === 0) {
+                console.log(feedSources);
                 for (var i=0; i<feedSources.length; i++) {
                     FeedLoader.fetch({q: feedSources[i].url, num: 10}, {}, function (data) {
+                        console.log(data);
                         var feed = data.responseData.feed;
                         feeds.push(feed);
                     });

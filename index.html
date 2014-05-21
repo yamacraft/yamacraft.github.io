@@ -37,16 +37,72 @@
         <div class="units-row">
             <div class="unit-100">
                 <h1>山田Github Pages</h1>
-                <h2>account</h2>
-                <ul>
-                    <li><a target="_blank" href="https://github.com/yamacraft"><i class="fa fa-github-square fa-3x"></i> Github</a></li>
-                    <li><a target="_blank" href="https://plus.google.com/116503805189192672149/"><i class="fa fa-google-plus-square fa-3x"></i> Google+</a></li>
-                    <li><a target="_blank" href="https://twitter.com/yamacraft"><i class="fa fa-twitter fa-3x"></i> twitter</a></li>
-                    <li><a target="_blank" href="https://www.facebook.com/yamacraft"><i class="fa fa-facebook-square fa-3x"></i> Facebook</a></li>
-                    <li><a target="_blank" href="http://yamacraft2.exblog.jp/"><i class="fa fa-pencil fa-3x"></i> Blog</a></li>
-                    <li><a target="_blank" href="http://qiita.com/yamacraft"><i class="fa fa-android fa-3x"></i> Qiita</a></li>
-                </ul>
+            </div>
+        </div>
 
+        <div class="units-row">
+            <div class="unit-100">
+                <h2>account</h2>
+                <div class="units-row end">
+                    <div class="unit-60">
+                        <ul class="blocks-6">
+                            <li>
+                                <a target="_blank" href="https://github.com/yamacraft">
+                                    <i class="fa fa-github-square fa-3x"></i>
+                                    <p>Github</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://plus.google.com/116503805189192672149/">
+                                    <i class="fa fa-google-plus-square fa-3x"></i>
+                                    <p>Google+</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://twitter.com/yamacraft">
+                                    <i class="fa fa-twitter fa-3x"></i>
+                                    <p>twitter</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://www.facebook.com/yamacraft">
+                                    <i class="fa fa-facebook-square fa-3x"></i>
+                                    <p>Facebook</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="http://yamacraft2.exblog.jp/">
+                                    <i class="fa fa-pencil fa-3x"></i>
+                                    <p>Blog</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="http://qiita.com/yamacraft">
+                                    <i class="fa fa-android fa-3x"></i>
+                                    <p>Qiita</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="units-row" ng-app='feedModule'>
+            <div class="unit-100" ng-controller='FeedCtrl'>
+                <h2>rss</h2>
+                <div ng-repeat="feed in feeds | orderBy:'title'">
+                    <h3><a href="{{feed.link}}" target="_blank">{{feed.title}}</a></h3>
+                    <p><span ng-repeat="item in feed.entries">
+                        <a href="{{item.link}}" target="_blank">{{item.title}}</a>
+                        (<span>{{item.publishedDate | date:'yyyy/MM/dd HH:mm'}}</span>)<br />
+                    </span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="units-row">
+            <div class="unit-100">
                 <h2>create</h2>
                 <ul>
                     <li><a href="./atndbeta_search/">ATND beta検索</a></li>
@@ -56,18 +112,6 @@
                     <li><a href="./slide_adt_gradle/">ADTでGradle</a></li>
                     <li><a href="./slide_android_display/">最近のandroid端末の解像度、知ってますか？</a></li>
                 </ul>
-            </div>
-        </div>
-
-        <div class="units-row" ng-app='feedModule'>
-            <div class="unit-100" ng-controller='FeedCtrl'>
-                <h2>Rss</h2>
-                <div ng-repeat="feed in feeds | orderBy:'title'">
-                    <h3><a href="{{feed.link}}" target="_blank">{{feed.title}}</a></h3>
-                    <p><span ng-repeat="item in feed.entries">
-                        <a href="{{item.link}}" target="_blank">{{item.title}}</a> (<span>{{item.publishedDate | date:'d-MM-yyyy HH:mm'}}</span>)<br />
-                    </span></p>
-                </div>
             </div>
         </div>
 
