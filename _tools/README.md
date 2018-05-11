@@ -11,7 +11,8 @@ ChromeのWebServerクライアントも楽でいいんですけどね。
 
 ```
 $ cd yamacraft.github.io
-$ docker-compose -f _tools/docker-compose.yml up --build -d
+$ docker build -t github_pages_local -f _tools/Dockerfile .
+$ docker run --rm -v `pwd`:/app -p 9004:8000 github_pages_local
 ```
 
 to: http://localhost:9004
