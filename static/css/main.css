@@ -15,6 +15,10 @@
     position: relative;
     text-align: center;
 }
+h1>a,a:hover,a:visited{
+    color: inherit;
+}
+
 .wrapper .container {
     max-width: 80rem;
 }
