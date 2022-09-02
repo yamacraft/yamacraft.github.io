@@ -1,0 +1,13 @@
+baseURL = 'https://yamacraft.github.io/'
+languageCode = 'ja-jp'
+title = '山田航空ネットワークフロント'
+
+hasCJKLanguage = true
+enableEmoji = true
+googleAnalytics = "G-WN2EJQSS9T"
+
+copyright = "yamacraft"
+
+[params]
+author = "yamacraft"
+description="@yamacraftの情報ページ"
