@@ -6,7 +6,7 @@
     <meta name="robots" content="index,follow">
 
     <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
-    <meta name="description" content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{.Description}}{{end}}">
+    <meta name="description" content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{ default .Summary .Description }}{{end}}">
 
     <meta name="author" content="yamacraft" >
 
